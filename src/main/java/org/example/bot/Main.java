@@ -2,24 +2,23 @@ package org.example.bot;
 
 public class Main {
 
-    public String processUserInput(String userInput, String userId) {
+    public void processUserInput(String userInput, String userId) {
         System.out.println("сообщение: " + userInput + " от: " + userId);
-        String outputText = Response(userInput);
-        System.out.println("Ответ: " + outputText);
-        return outputText;
-    }
+        String outputText;
 
-    private String Response(String userInput){
         if ("/start".equals(userInput)) {
-            return startMessage();
+            outputText = startMessage();
         } else if ("/help".equals(userInput)) {
-            return helpMessage();
+            outputText = helpMessage();
         } else {
-            return "Вы ввели: " + userInput;
+            outputText = "Вы ввели: " + userInput;
         }
+
+        System.out.println("Ответ: " + outputText);
     }
 
-    String startMessage() {
+    // Изменим модификаторы доступа на public
+    public String startMessage() {
         return "Добро пожаловать в наш первый бот!\n" +
                 "Он умеет возвращать текст, который вы ему напишите.\n" +
                 "Просто отправьте ему текстовое сообщение, и он ответит вам.\n" +
@@ -28,7 +27,7 @@ public class Main {
                 "/help - показать, как я работаю\n";
     }
 
-    String helpMessage() {
+    public String helpMessage() {
         return "Справка по работе:\n" +
                 "Бот умеет возвращать текст, который вы ему напишите.\n" +
                 "Например: вы пишите \"привет\", он ответит:\n" +
